@@ -1,0 +1,449 @@
+/* ================================================
+   ONE TOUCH THAI MASSAGE - Design System
+   Inspired by natural wood tones, Thai zen aesthetics
+   ================================================ */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+/* CSS Custom Properties (Design Tokens) */
+:root {
+  /* Colors - Warm Natural Palette inspired by OSB wood walls & green accents */
+  --color-background: #FAF6F0;
+  --color-background-alt: #F0EBE3;
+  --color-surface: #FFFBF7;
+  --color-text: #2D2420;
+  --color-text-muted: #5C524A;
+  --color-text-light: #8A7D70;
+
+  /* Primary - Forest Green (from business card) */
+  --color-primary: #5B7355;
+  --color-primary-hover: #4A6146;
+  --color-primary-light: #7A9274;
+
+  /* Accent - Warm Gold (from signage) */
+  --color-accent: #C9A87C;
+  --color-accent-hover: #B8956A;
+  --color-accent-light: #D4B88F;
+
+  /* Additional warm tones */
+  --color-wood: #B5956E;
+  --color-cream: #F5EDE4;
+  --color-charcoal: #3D3530;
+
+  --color-border: #E0D5C8;
+  --color-border-light: #EBE3D8;
+
+  /* Typography */
+  --font-heading: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body: 'DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Font Sizes - Fluid Typography */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --text-base: clamp(1rem, 0.925rem + 0.375vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.375rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.625rem);
+  --text-2xl: clamp(1.5rem, 1.25rem + 1.25vw, 2.25rem);
+  --text-3xl: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+  --text-4xl: clamp(2.5rem, 1.75rem + 3.75vw, 5rem);
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+  --space-5xl: 8rem;
+
+  /* Layout */
+  --max-width: 1280px;
+  --max-width-narrow: 800px;
+  --max-width-wide: 1440px;
+  --header-height: 80px;
+
+  /* Borders & Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.08);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+}
+
+/* ================================================
+   Reset & Base
+   ================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-text);
+  background-color: var(--color-background);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Subtle warm ambient glow */
+body::before {
+  content: '';
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(91, 115, 85, 0.08) 0%, transparent 70%);
+  top: -200px;
+  right: -100px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(100px);
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(201, 168, 124, 0.1) 0%, transparent 70%);
+  bottom: 20%;
+  left: -150px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(100px);
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ================================================
+   Typography
+   ================================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+h5 { font-size: var(--text-lg); }
+h6 { font-size: var(--text-base); }
+
+p {
+  margin-bottom: var(--space-md);
+  color: var(--color-text-muted);
+}
+
+.text-primary { color: var(--color-primary); }
+.text-accent { color: var(--color-accent); }
+.text-muted { color: var(--color-text-muted); }
+.text-light { color: var(--color-text-light); }
+
+/* ================================================
+   Layout Utilities
+   ================================================ */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.container--narrow {
+  max-width: var(--max-width-narrow);
+}
+
+.container--wide {
+  max-width: var(--max-width-wide);
+}
+
+.section {
+  padding: var(--space-4xl) 0;
+  position: relative;
+  z-index: 1;
+}
+
+.section--large {
+  padding: var(--space-5xl) 0;
+}
+
+/* Flex utilities */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }
+.gap-xl { gap: var(--space-xl); }
+
+/* Grid */
+.grid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================================================
+   Buttons
+   ================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-base);
+  white-space: nowrap;
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.btn--primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(91, 115, 85, 0.3);
+}
+
+.btn--secondary {
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-text);
+}
+
+.btn--secondary:hover {
+  background-color: var(--color-text);
+  color: var(--color-background);
+}
+
+.btn--accent {
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  box-shadow: 0 4px 20px rgba(201, 168, 124, 0.3);
+}
+
+.btn--accent:hover {
+  background-color: var(--color-accent-hover);
+  box-shadow: 0 6px 25px rgba(201, 168, 124, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn--ghost {
+  background-color: transparent;
+  color: var(--color-text);
+  padding: var(--space-sm) 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.btn--ghost:hover {
+  color: var(--color-primary);
+}
+
+/* ================================================
+   Links
+   ================================================ */
+.link {
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width var(--transition-base);
+}
+
+.link:hover::after {
+  width: 100%;
+}
+
+.link:hover {
+  color: var(--color-primary);
+}
+
+/* ================================================
+   Cards
+   ================================================ */
+.card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.card__image {
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  width: 100%;
+}
+
+.card__content {
+  padding: var(--space-lg);
+}
+
+.card__title {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-sm);
+}
+
+.card__description {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+/* ================================================
+   Animations
+   ================================================ */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================================================
+   Spacing utilities
+   ================================================ */
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xl { margin-top: var(--space-xl); }
+.mt-2xl { margin-top: var(--space-2xl); }
+
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+.mb-2xl { margin-bottom: var(--space-2xl); }
+
+/* ================================================
+   Text alignment
+   ================================================ */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+/* ================================================
+   Visibility
+   ================================================ */
+@media (max-width: 768px) {
+  .hide-mobile { display: none !important; }
+}
+
+@media (min-width: 769px) {
+  .hide-desktop { display: none !important; }
+}
+
+/* ================================================
+   Selection
+   ================================================ */
+::selection {
+  background-color: var(--color-primary);
+  color: white;
+}

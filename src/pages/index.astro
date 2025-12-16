@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Services from '../components/Services.astro';
+import About from '../components/About.astro';
+import Space from '../components/Space.astro';
+import Testimonials from '../components/Testimonials.astro';
+import CTA from '../components/CTA.astro';
+import Location from '../components/Location.astro';
+import Footer from '../components/Footer.astro';
+
+const siteConfig = {
+  title: "One Touch Thai Massage | Professional Massage Therapy in Toongabbie",
+  description: "30+ years of professional Thai & Remedial Massage in Toongabbie. Deep tissue, hot stones, sports massage, cupping & more. Book with Natalie today.",
+};
+---
+
+<Layout title={siteConfig.title} description={siteConfig.description}>
+  <Header businessName="One Touch Thai Massage" />
+
+  <main>
+    <Hero
+      headline="30 Years of Healing Hands"
+      subheadline="Professional Thai & Remedial Massage in Toongabbie. Experience the art of therapeutic touch with Natalie, where traditional techniques meet modern expertise."
+    />
+
+    <Services />
+
+    <About />
+
+    <Space />
+
+    <Testimonials />
+
+    <CTA />
+
+    <Location />
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  main {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Scroll reveal animations */
+  main > :global(section:not(.hero)) {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  main > :global(section:not(.hero).visible) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  // Intersection Observer for scroll reveal animations
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px 0px -100px 0px',
+    threshold: 0.1
+  };
+
+  const revealOnScroll = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  // Observe all sections except hero
+  document.querySelectorAll('main > section:not(.hero)').forEach(section => {
+    revealOnScroll.observe(section);
+  });
+</script>
